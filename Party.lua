@@ -885,6 +885,7 @@ function PartyService:Ready()
 	}})	
 end
 
+
 local General = G2L["1"].Frame.Lower.General;
 local Party_UI = G2L["1"].Frame.Lower.Party_UI;
 
@@ -910,6 +911,8 @@ function functions.GetIcon(username)
 	
 	task.spawn(function()
 		local userID = Players:GetUserIdFromNameAsync(username);
+
+		warn('userID : ', userID)
 
 		local thumbType = Enum.ThumbnailType.HeadShot
 		local thumbSize = Enum.ThumbnailSize.Size420x420
@@ -939,7 +942,9 @@ function functions.AddPlayer(username)
 	else 
 		Icon = functions.GetIcon(username);
 	end
-
+	
+	warn('Icon : ', Icon);
+	
 	if Icon then 
 		clone.Player_Image.ImageLabel.Image = Icon
 		Library.Icon[username] = Icon
@@ -956,11 +961,15 @@ function functions.AddPlayer(username)
 		clone.Kick.Visible = true;
 		
 		table.insert(Library.Connects,clone.Kick.ImageButton.Activated:Connect(function()
+			
 			PartyService:Kick(username);
+			
+			Library.Player_list[username]:Destroy();
+			warn('Kick Member');
 		end))
 	end
-
-	table.insert(Library.Player_list, clone);
+	
+	Library.Player_list[username] = clone;
 end
 
 
@@ -1002,6 +1011,7 @@ function functions.LoadParty()
 	end;
 
 	Party_UI.Leave.TextLabel.Text = 'Leave';
+	warn('LoadParty');
 end
 
 
@@ -1021,7 +1031,7 @@ function functions.Create()
 	until Library.Partys or tick() - at > 5
 
 	if tick() - at > 5 then 
-		return
+		return warn('Create Party Fail.');
 	end
 
 	return functions.LoadParty();
@@ -1043,7 +1053,7 @@ function functions.Join(token)
 	until Library.Partys or tick() - at > 5
 
 	if tick() - at > 5 then 
-		return 
+		return warn('Join Party Fail.');
 	end
 
 	return functions.LoadParty();
@@ -1063,7 +1073,9 @@ end);
 
 General.Copy.ImageButton.Activated:Connect(function()
 	local token = General.UID.TextBox.Text
-	setclipboard(token)
+	setclipboard(token);
+
+	warn('copy : ', token)
 end);
 
 Party_UI.Copy.ImageButton.Activated:Connect(function()
@@ -1118,10 +1130,12 @@ local Task = task.spawn(function()
 				end
 				
 				functions.LoadParty();
+				warn('Partys : Get')
 			end;
 		end);
 	end;
 
+	warn('new task.');
 end)
 
 local TS = game:GetService("TweenService")
@@ -1159,6 +1173,8 @@ for _,value in pairs(Frame:GetDescendants()) do
 			local OG_Size = value.Parent.Size
 			
 			if value.Parent.Name == 'Ready' then 
+				
+				warn('not Ready Hook')
 				continue;
 			end
 		
