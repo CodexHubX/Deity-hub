@@ -912,8 +912,6 @@ function functions.GetIcon(username)
 	task.spawn(function()
 		local userID = Players:GetUserIdFromNameAsync(username);
 
-		warn('userID : ', userID)
-
 		local thumbType = Enum.ThumbnailType.HeadShot
 		local thumbSize = Enum.ThumbnailSize.Size420x420
 
@@ -943,8 +941,6 @@ function functions.AddPlayer(username)
 		Icon = functions.GetIcon(username);
 	end
 	
-	warn('Icon : ', Icon);
-	
 	if Icon then 
 		clone.Player_Image.ImageLabel.Image = Icon
 		Library.Icon[username] = Icon
@@ -952,7 +948,7 @@ function functions.AddPlayer(username)
 
 	clone.Username.Text = username;
 
-	local role = ((Library.Partys.leader == LocalPlayer.Name and 'Leader') or 'Member')
+	local role = ((Library.Partys.leader == username and 'Leader') or 'Member')
 	
 	clone.Desc.Text = 'Role : '..tostring(role);
 	clone.Visible = true;
@@ -965,7 +961,6 @@ function functions.AddPlayer(username)
 			PartyService:Kick(username);
 			
 			Library.Player_list[username]:Destroy();
-			warn('Kick Member');
 		end))
 	end
 	
@@ -1011,7 +1006,6 @@ function functions.LoadParty()
 	end;
 
 	Party_UI.Leave.TextLabel.Text = 'Leave';
-	warn('LoadParty');
 end
 
 
@@ -1031,7 +1025,7 @@ function functions.Create()
 	until Library.Partys or tick() - at > 5
 
 	if tick() - at > 5 then 
-		return warn('Create Party Fail.');
+		return 
 	end
 
 	return functions.LoadParty();
@@ -1053,7 +1047,7 @@ function functions.Join(token)
 	until Library.Partys or tick() - at > 5
 
 	if tick() - at > 5 then 
-		return warn('Join Party Fail.');
+		return 
 	end
 
 	return functions.LoadParty();
@@ -1074,8 +1068,6 @@ end);
 General.Copy.ImageButton.Activated:Connect(function()
 	local token = General.UID.TextBox.Text
 	setclipboard(token);
-
-	warn('copy : ', token)
 end);
 
 Party_UI.Copy.ImageButton.Activated:Connect(function()
@@ -1130,12 +1122,9 @@ local Task = task.spawn(function()
 				end
 				
 				functions.LoadParty();
-				warn('Partys : Get')
 			end;
 		end);
 	end;
-
-	warn('new task.');
 end)
 
 local TS = game:GetService("TweenService")
@@ -1174,7 +1163,6 @@ for _,value in pairs(Frame:GetDescendants()) do
 			
 			if value.Parent.Name == 'Ready' then 
 				
-				warn('not Ready Hook')
 				continue;
 			end
 		
