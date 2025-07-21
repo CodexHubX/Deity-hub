@@ -1099,12 +1099,18 @@ Party_UI.Ready.ImageButton.Activated:Connect(function()
 	if not Library.HasParty or InReady then 
 		return;
 	end
+
+    InReady = true;
 	
 	PartyService:Ready();
+
+    task.wait(1.5);
+    
+    InReady = false;
+
 	Library.Partys = PartyService:Get();
 
-	
-	if not table.find(Library.Partys.ready, LocalPlayer.Name) then 
+	if table.find(Library.Partys.ready, LocalPlayer.Name) then 
 		Party_UI.Ready.BackgroundColor3 = Color3.fromRGB(49, 145, 19)
 		Party_UI.Ready.TextLabel.Text = 'Cancel'
 	else 
