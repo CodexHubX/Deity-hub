@@ -905,6 +905,14 @@ local Template = Player_list.Template;
 
 Template.Kick.Visible = false;
 
+function Library.HasParty()
+    return Library.HasParty;
+end;
+
+function Library.Get() 
+    return Library.Partys;
+end;
+
 function functions.GetIcon(username)
 
 	local content = nil
@@ -992,7 +1000,7 @@ function functions.LoadParty()
 	Party_UI.UID.TextLabel.Text = tostring(Library.Partys.token);
 		
 		
-	if not table.find(Library.Partys.ready, LocalPlayer.Name) then 
+	if table.find(Library.Partys.ready, LocalPlayer.Name) then 
 		Party_UI.Ready.BackgroundColor3 = Color3.fromRGB(49, 145, 19)
 		Party_UI.Ready.TextLabel.Text = 'Cancel'
 	else 
