@@ -905,10 +905,6 @@ local Template = Player_list.Template;
 
 Template.Kick.Visible = false;
 
-function Library.HasParty()
-    return Library.HasParty;
-end;
-
 function Library.Get() 
     return Library.Partys;
 end;
@@ -1105,7 +1101,7 @@ Party_UI.Ready.ImageButton.Activated:Connect(function()
 	PartyService:Ready();
 
     task.wait(1.5);
-    
+
     InReady = false;
 
 	Library.Partys = PartyService:Get();
