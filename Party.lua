@@ -895,10 +895,17 @@ local Library = {
 	Icon = {},
 	HasParty = false,
 	Partys = nil,
+    Leader = false,
 };
 
 local functions = {}
 Library.Partys = PartyService:Get();
+
+if Library.Partys and Library.Partys.leader and Library.Partys.leader == LocalPlayer.Name then 
+    PartyService:Update(tostring(game.JobId));
+
+    warn('Your leader. Update Job ID.');
+end;
 
 local Player_list = Party_UI.ScrollingFrame
 local Template = Player_list.Template;
@@ -959,7 +966,8 @@ function functions.AddPlayer(username)
 
 	if Library.Partys.leader == LocalPlayer.Name and username ~= LocalPlayer.Name then 
 		clone.Kick.Visible = true;
-		
+        Library.Leader = true;
+
 		table.insert(Library.Connects,clone.Kick.ImageButton.Activated:Connect(function()
 			
 			PartyService:Kick(username);
@@ -1005,10 +1013,14 @@ function functions.LoadParty()
 	end
 	
 	if Library.Partys.leader == LocalPlayer.Name then 
+
+        Library.Leader = true;
 		Party_UI.Leave.TextLabel.Text = 'Abandon'
+
 		return;
 	end;
 
+    Library.Leader = false;
 	Party_UI.Leave.TextLabel.Text = 'Leave';
 end
 
@@ -1030,7 +1042,9 @@ function functions.Create()
 
 	if tick() - at > 5 then 
 		return 
-	end
+	end 
+
+    PartyService:Update(tostring(game.JobId));
 
 	return functions.LoadParty();
 end
