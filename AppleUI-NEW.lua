@@ -4316,7 +4316,7 @@ return {
 		Selection = color4("E4080A", 100), -- 007AFF
 		SelectionStroke = color4("E4080A", 60),
 
-		SelectionFocused = color4("0A82FF", 100),
+		SelectionFocused = color4("E60852", 100),
 		SelectionFocusedAccent = color4("FFFFFF", 85),
 
 		Sidebar = color4("202023", 84),
