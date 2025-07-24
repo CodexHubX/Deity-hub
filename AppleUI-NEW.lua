@@ -9508,6 +9508,7 @@ local creator = __DIST.load('d')
 					
                     if properties.ValueChanged then
                         properties.Value = table.clone(selectedValues)
+						object.Value = properties.Value
                         --task.spawn(properties.ValueChanged, object, table.clone(selectedValues))
                     end
 
@@ -9735,8 +9736,11 @@ local creator = __DIST.load('d')
                 warn('properties : ', value)
 
                 if multi then 
-                    
-                    task.spawn(properties.ValueChanged, object, value)
+					-- warn('multi : ', value, properties.ValueChanged, object)
+                    -- task.spawn(properties.ValueChanged, object, value)
+
+					properties.ValueChanged(object,value)
+
                     return;
                 end;
 
@@ -10013,5 +10017,4 @@ if not game:IsLoaded() then
 
 	return object
 end
-
 return cascade;
