@@ -9957,8 +9957,8 @@ local creator = __DIST.load('d')
 						end;
 
 						updateHover(option, label, true);	
-                        properties.Value = key
-
+                        
+                        --properties.Value = key
 						structures.CurrentTab.Text = tostring(properties.Value);
                        -- task.spawn(properties.ValueChanged, object, key)
                     end
@@ -10164,10 +10164,12 @@ local creator = __DIST.load('d')
 
 		Value = function(value)
 			if properties.ValueChanged then
-				properties.Value = value
-                warn('NEW VALUE')
-
+				
+                properties.Value = value
+                warn('properties : ', value)
+                
                 if multi then 
+                    
                     task.spawn(properties.ValueChanged, object, value)
                     return;
                 end;
