@@ -4312,8 +4312,10 @@ return {
 		Zoom = color4("28C840", 100),
 
 		SwitchAccent = color4("478CF6", 100),
-		Selection = color4("007AFF", 100),
-		SelectionStroke = color4("007AFF", 60),
+
+		Selection = color4("E4080A", 100), -- 007AFF
+		SelectionStroke = color4("E4080A", 60),
+
 		SelectionFocused = color4("0A82FF", 100),
 		SelectionFocusedAccent = color4("FFFFFF", 85),
 
@@ -4495,7 +4497,7 @@ return {
 			Shadow = value(Color3.new(0, 0, 0)),
 			FillPrimary = value(ColorSequence.new({
 				ColorSequenceKeypoint.new(0, Color3.fromRGB(43, 145, 255)),
-				ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 122, 255)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 122, 255)), -- color buttpon
 			})),
 			FillSecondary = value(ColorSequence.new({
 				ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
