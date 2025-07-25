@@ -5278,7 +5278,7 @@ local effects = __DIST.load('k')
 
 	properties.Size = properties.Size or UDim2.fromOffset(850, 530)
 
-	if table.find({Enum.Platform.IOS, Enum.Platform.Android}, UserInputService:GetPlatform()) then 
+	if table.find({Enum.Platform.IOS, Enum.Platform.Android}, game:GetService('UserInputService'):GetPlatform()) then 
 		properties.Size = UDim2.fromOffset(850 / 1.5, 530 / 1.5)
 	end;
 
