@@ -5258,11 +5258,12 @@ local effects = __DIST.load('k')
 		Name = "Window",
 		BackgroundTransparency = 1,
 		BorderSizePixel = 0,
-		Size = UDim2.fromScale(1, 1),
+		Size = UDim2.fromScale(0.5, 0.5),
 		AnchorPoint = Vector2.new(0.5, 0.5),
 		Position = UDim2.fromScale(0.5, 0.5),
 		Parent = parent,
 	}).__instance
+
 	local originalSize
 	local originalPosition
 	local originalPosition2
