@@ -1161,8 +1161,10 @@ end
 
 local Frame = G2L["1"].Frame
 local Exit = Frame.Upper.Toolbar.WindowControls.Exit
-local Toggle = false
+local Toggle = true
 
+TweenObject(Exit,0.5,{ImageColor3 = Color3.fromRGB(162, 255, 128)},Enum.EasingStyle.Sine,false)
+TweenObject(Frame,0.5,{Position = UDim2.fromScale(0.896,0.954)},Enum.EasingStyle.Sine,false)
 
 Exit.MouseButton1Click:Connect(function()
 	if Toggle == false then
