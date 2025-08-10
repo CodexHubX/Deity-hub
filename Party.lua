@@ -11,18 +11,13 @@
 local G2L = {};
 
 -- StarterGui.Party
-G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+G2L["1"] = Instance.new("ScreenGui", game:GetService("CoreGui"));
 G2L["1"]["IgnoreGuiInset"] = true;
 G2L["1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets;
 G2L["1"]["Name"] = [[Party]];
 G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
 
 
--- StarterGui.Party.LocalScript
-
-
-
--- StarterGui.Party.Frame
 G2L["3"] = Instance.new("Frame", G2L["1"]);
 G2L["3"]["BorderSizePixel"] = 0;
 G2L["3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
