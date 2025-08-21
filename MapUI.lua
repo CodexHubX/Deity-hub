@@ -284,7 +284,7 @@ G2L["1e"]["ZIndex"] = 20;
 G2L["1e"]["BorderSizePixel"] = 0;
 G2L["1e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 -- [ERROR] cannot convert ImageContent, please report to "https://github.com/uniquadev/GuiToLuaConverter/issues"
-G2L["1e"]["Image"] = [[rbxassetid://114400705688044]];
+G2L["1e"]["Image"] = [[rbxassetid://73981457491542]];
 G2L["1e"]["Size"] = UDim2.new(1.00004, 0, 0.99878, 0);
 G2L["1e"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
 G2L["1e"]["BackgroundTransparency"] = 1;
