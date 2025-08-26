@@ -9663,7 +9663,7 @@ local creator = __DIST.load('d')
 				ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0),
 				ScrollBarImageTransparency = 0.5,
 				ScrollBarThickness = 3,
-                Size = UDim2.new(0,192,0,323),
+                Size = UDim2.new(0,300,0,323),
                 
 				__dynamicKeys = {
 					BackgroundColor3 = theme.MenuBackground[1],
